@@ -44,5 +44,13 @@ make
 ## Usage
 See the [examples](examples).
 
+## Papers
+
+E. Russo, M. Palesi, S. Monteleone, D. Patti, G. Ascia and V. Catania, "[MEDEA: A Multi-objective Evolutionary Approach to DNN Hardware Mapping](https://ieeexplore.ieee.org/abstract/document/9774747)," 2022 Design, Automation & Test in Europe Conference & Exhibition (DATE)
+
+E. Russo, M. Palesi, D. Patti, S. Monteleone, G. Ascia and V. Catania, "[Multiobjective End-to-End Design Space Exploration of Parameterized DNN Accelerators](https://ieeexplore.ieee.org/abstract/document/9902977)," in IEEE Internet of Things Journal, 2023
+
+
+
 
 
