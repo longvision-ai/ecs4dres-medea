@@ -1,21 +1,21 @@
-# Simba-like Chiplet Architecture
+# Simba-like FP32 Chiplet Architecture
 
 architecture:
   version: 0.3
   subtree:
     - name: System
       attributes:
-        datawidth: 8
-        word-bits: 8
+        datawidth: 32
+        word-bits: 32
         technology: 45nm
       local:
         - name: DRAM
           class: DRAM
           attributes:
             type: LPDDR4
-            width: 64
+            width: 256
             block-size: 8
-            word-bits: 8
+            word-bits: 32
             read_bandwidth: 17.9
             write_bandwidth: 17.9
             instances: 1
@@ -28,8 +28,8 @@ architecture:
               attributes:
                 depth: 2048
                 width: 256
-                word-bits: 8
-                block-size: 32
+                word-bits: 32
+                block-size: 8
                 nbanks: 4
                 nports: 2
                 read_bandwidth: 16
@@ -40,7 +40,8 @@ architecture:
             - name: NoC
               class: Legacy
               attributes:
-                word-bits: 8
+                word-bits: 32
+                datawidth: 64
                 energy-per-hop: 0.952
           subtree:
             - name: PE[0..15]
@@ -51,8 +52,8 @@ architecture:
                   attributes:
                     depth: 1024
                     width: 64
-                    word-bits: 8
-                    block-size: 8
+                    word-bits: 32
+                    block-size: 2
                     meshX: 16
                     network_fill: NoC
                     instances: 16
@@ -62,8 +63,9 @@ architecture:
                   subclass: smartbuffer_RF
                   attributes:
                     depth: 512
-                    word-bits: 8
-                    block-size: 8
+                    width: 64
+                    word-bits: 32
+                    block-size: 2
                     nbanks: 8
                     meshX: 16
                     instances: 128
@@ -73,7 +75,9 @@ architecture:
                   subclass: smartbuffer_RF
                   attributes:
                     depth: 128
-                    word-bits: 24
+                    width: 64
+                    word-bits: 32
+                    block-size: 2
                     meshX: 16
                     instances: 128
                     entries: 128
@@ -82,7 +86,9 @@ architecture:
                   subclass: reg_storage
                   attributes:
                     depth: 1
-                    word-bits: 8
+                    width: 32
+                    word-bits: 32
+                    block-size: 1
                     cluster-size: 64
                     num-ports: 2
                     meshX: 16
@@ -90,8 +96,8 @@ architecture:
                     entries: 1
                 - name: LMAC
                   class: compute
-                  subclass: lmac
+                  subclass: lmac_fp32
                   attributes:
-                    datawidth: 8
+                    datawidth: 32
                     meshX: 16
                     instances: 1024
